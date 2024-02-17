@@ -12,8 +12,8 @@ st.set_page_config(                # 웹 페이지의 기본(config) 설정(set)
 # 3.페이지 타이틀 및 Header출력
 now = datetime.datetime.now()      # 현재 시각/날짜 알려주는 객체(now) 생성
 now = now.strftime("%Y/%m/%d")     # 객체(now)의 format을 년/월/일로 변경
-st.title("비만도(BMI) Web App")# 웹 페이지상의 첫 제목(가장 큰 font) 출력
-st.header("Streamlit으로 Web App만들기 2편")# 제목 아래 머릿글 출력
+st.title("비만도 (BMI) 측정 ")# 웹 페이지상의 첫 제목(가장 큰 font) 출력
+st.header("Streamlit 웹 연동 테스트 ")# 제목 아래 머릿글 출력
 st.subheader("Date:{}".format(now))# 머릿글 아래 날짜 출력
 
 # 4.BMI 계산 함수
@@ -25,10 +25,10 @@ def bmi_calculator(weight, height):# 체중과 신장을 매개변수(전달값)
 st.markdown("---")                 # 화면에 경계선 생성
 
 ## 5-1.체중을 입력하는 number_input 위젯 생성
-weight = st.number_input(label = "체중(단위 kgf)입력:",       # 위젯 라벨 
+weight = st.number_input(label = "체중(단위 kg)입력:",       # 위젯 라벨 
                         min_value = 0.00, max_value = 300.00, # 입력 최소/최대값 설정
                         value = 0.00,                         # 입력 창에 입력된 default값
-                        placeholder = "kgf단위로 입력하세요!")# 입력 창에 아무것도 없을 때, 뜨는 메세지
+                        placeholder = "kg단위로 입력하세요!")# 입력 창에 아무것도 없을 때, 뜨는 메세지
 ## 5-1.체중을 입력하는 number_input 위젯 생성
 height = st.number_input(label = "신장(단위 m)입력:",         # 위젯 라벨 
                         min_value = 0.00, max_value = 4.00,   # 입력 최소/최대값 설정
@@ -44,7 +44,7 @@ elif weight <= 5.00 or height <= 0.50:                        # 체중/신장이
 
 if button:                                                    # BMI계산기 실행 버튼을 누르면
     bmi = round(bmi_calculator(weight, height), 1)            # bmi_calculator함수 실행, 결과값을 bmi로 반환
-    st.markdown("**BMI:{}**".format(bmi))                     # bmi값을 출력 : ** **은 bold 효과 발생
+    st.markdown("**BMI 결과 : {}**".format(bmi))                     # bmi값을 출력 : ** **은 bold 효과 발생
     if bmi >= 25.0:                                           # bmi가 25.0이상이면 
         st.markdown(":fire: **:red[과체중]**")                # "fire"이미지, 붉은색의 "과체중" 출력
     elif bmi >= 18.5:                                         # bmi가 25.0미만 18.5이상이면
